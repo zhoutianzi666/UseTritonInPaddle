@@ -17,7 +17,7 @@ def make_triton_compatible_with_paddle():
         new_all_lines = []
         with open(link_file, 'r') as f:
             for line in f.readlines():
-                line = line.replace("(int)sizeof({meta.orig_kernel_name}_kernels)", "(int)(sizeof({meta.orig_kernel_name}_kernels) / sizeof({meta.orig_kernel_name}_kernels[0]))")
+                line = line.replace("(int)sizeof({meta.orig_kernel_name}_kernels);", "(int)(sizeof({meta.orig_kernel_name}_kernels) / sizeof({meta.orig_kernel_name}_kernels[0]));")
                 new_all_lines.append(line)
         with open(link_file, 'w') as f:
             f.writelines(new_all_lines)
