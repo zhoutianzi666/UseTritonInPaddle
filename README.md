@@ -23,6 +23,11 @@ except:
     import use_triton_in_paddle as torch
 ```
 
+- 然后就可以在paddle中正常使用triton了。和torch的用法一摸一样
+
+
+
+
 
 
 
