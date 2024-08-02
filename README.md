@@ -5,7 +5,8 @@
 
 - 由于triton源码中部分util函数（如检查当前机器的计算能力，检查当前机器的idx）依赖了triton，这对于paddle用户想要使用triton不是很友好。
 - 故此项目，将triton源码中的部分依赖triton的代码，替换为paddle的代码。
-- 使用方式，用户只需要安装`python3.8 -m pip install use_triton_in_paddle`即可。
+- 使用方式，用户只需要安装`python3.8 -m pip install git+https://github.com/zhoutianzi666/UseTritonInPaddle.git`即可。
+- 由于本项目只有几个文件，所以即使你的网很差，你也应该可以安装成功
 
 
 ```py
@@ -24,6 +25,8 @@ except:
 ```
 
 - 然后就可以在paddle中正常使用triton了。和torch的用法一摸一样
+
+
 
 
 
