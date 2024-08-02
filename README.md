@@ -14,8 +14,7 @@ import use_triton_in_paddle
 use_triton_in_paddle.make_triton_compatible_with_paddle()
 ```
 - 会自动将triton内部的`import torch`换成`import use_triton_in_paddle as torch`
-- 当然看起来换成
-
+- 当然看起来换成下面这样的语句更保险一些
 ```py
 try:
     import torch
