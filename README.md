@@ -10,7 +10,8 @@
 
 # <font color=red size=15> 我们目前只支持在paddle中使用 triton 2.3 和 triton 3.0 </font>
 
-`python3.8 -c "import use_triton_in_paddle; use_triton_in_paddle.make_triton_compatible_with_paddle()"`
+
+# install之后用户只需要在终端执行 `python3.8 -c "import use_triton_in_paddle; use_triton_in_paddle.make_triton_compatible_with_paddle()"`即可在paddle中使用triton，记住，只需要执行一次就可以啦！之后在任意终端都无需再执行。
 
 - 会自动将triton内部的`import torch`换成`import use_triton_in_paddle as torch`
 - 当然看起来换成下面这样的语句更保险一些
