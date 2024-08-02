@@ -8,7 +8,7 @@
 - 使用方式，用户只需要安装`python -m pip install git+https://github.com/zhoutianzi666/UseTritonInPaddle.git`即可。
 - 由于本项目只有几个文件，所以即使你的网很差，你也应该可以安装成功
 
-# <font color=red size=15> 我们目前只支持在paddle中使用 triton 2.3 和 triton 3.0 </font>
+# <font color=red size=15> 我们目前只支持在paddle中使用 triton 2.3 和 triton 3.0 ，其他的也许可以但我们没有试过</font>
 
 
 ## install之后用户只需要在终端执行 `python -c "import use_triton_in_paddle; use_triton_in_paddle.make_triton_compatible_with_paddle()"`即可在paddle中使用triton，记住，只需要执行一次就可以啦！之后在任意终端都无需再执行。
