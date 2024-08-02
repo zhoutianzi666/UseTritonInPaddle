@@ -13,6 +13,17 @@ import use_triton_in_paddle
 use_triton_in_paddle.make_triton_compatible_with_paddle()
 ```
 - 会自动将triton内部的`import torch`换成`import use_triton_in_paddle as torch`
+- 当然看起来换成
+
+```py
+try:
+    import torch
+except:
+    print("No module named 'torch', we will use_triton_in_paddle as torch inside triton")
+    import use_triton_in_paddle as torch
+```
+
+
 
 
 
