@@ -8,11 +8,8 @@
 - 使用方式，用户只需要安装`python3.8 -m pip install git+https://github.com/zhoutianzi666/UseTritonInPaddle.git`即可。
 - 由于本项目只有几个文件，所以即使你的网很差，你也应该可以安装成功
 
+`python3.8 -c "import use_triton_in_paddle; use_triton_in_paddle.make_triton_compatible_with_paddle()"``
 
-```py
-import use_triton_in_paddle
-use_triton_in_paddle.make_triton_compatible_with_paddle()
-```
 - 会自动将triton内部的`import torch`换成`import use_triton_in_paddle as torch`
 - 当然看起来换成下面这样的语句更保险一些
 ```py
