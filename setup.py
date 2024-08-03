@@ -24,7 +24,7 @@ from setuptools import setup
 
 setup(
     name='use_triton_in_paddle',
-    version='0,0,0',
+    version='0.0.0',
     description=('A toolkit for generating small model.'),
     long_description='Tools for model compression',
     url='http://gitlab.baidu.com/PaddlePaddle/PaddleSlim',
