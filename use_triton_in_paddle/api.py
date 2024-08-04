@@ -62,14 +62,3 @@ def make_triton_compatible_with_paddle():
                 f.writelines(new_all_lines)
 
 
-def restore_triton():
-    for file in files:
-        new_all_lines = []
-        with open(file, 'r') as f:
-            for line in f.readlines():
-                line = line.replace("import use_triton_in_paddle as torch", "import torch")
-                new_all_lines.append(line)
-        with open(file, 'w') as f:
-            f.writelines(new_all_lines)
-
-

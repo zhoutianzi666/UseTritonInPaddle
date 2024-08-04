@@ -15,7 +15,6 @@
 
 - 会自动将triton内部的`import torch`换成`import use_triton_in_paddle as torch`
 - 然后就可以在paddle中正常使用triton了。和torch的用法一摸一样
-- 如果你想恢复更改，那只需要`python -c "import use_triton_in_paddle; use_triton_in_paddle.restore_triton()"`即可！
 
 
 
