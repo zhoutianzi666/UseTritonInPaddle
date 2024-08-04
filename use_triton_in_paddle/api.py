@@ -43,7 +43,7 @@ def make_triton_compatible_with_paddle():
                     
                     copy0_line = copy0_line.replace("import torch", "try:")
                     copy1_line = copy1_line.replace("import torch", "\timport torch")
-                    copy2_line = copy2_line.replace("import torch", "execpt:")
+                    copy2_line = copy2_line.replace("import torch", "except:")
                     copy3_line = copy3_line.replace("import torch", "\timport use_triton_in_paddle as torch")
                     new_all_lines.append(copy0_line)
                     new_all_lines.append(copy1_line)
