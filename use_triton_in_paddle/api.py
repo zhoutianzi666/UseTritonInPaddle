@@ -34,7 +34,19 @@ def make_triton_compatible_with_paddle():
         new_all_lines = []
         with open(file, 'r') as f:
             for line in f.readlines():
-                line = line.replace("import torch", "import use_triton_in_paddle as torch")
+                if ("import torch" in line):
+                    copy0_line = line
+                    copy1_line = line
+                    copy2_line = line
+                    copy3_line = line
+                    copy0_line.replace("import torch", "try:")
+                    copy1_line.replace("import torch", "\timport torch")
+                    copy2_line.replace("import torch", "execpt:")
+                    copy3_line.replace("import torch", "\timport use_triton_in_paddle as torch")
+                    new_all_lines.append(copy0_line)
+                    new_all_lines.append(copy1_line)
+                    new_all_lines.append(copy2_line)
+                    new_all_lines.append(copy3_line)
                 new_all_lines.append(line)
         with open(file, 'w') as f:
             f.writelines(new_all_lines)
