@@ -49,7 +49,8 @@ def make_triton_compatible_with_paddle():
                     new_all_lines.append(copy1_line)
                     new_all_lines.append(copy2_line)
                     new_all_lines.append(copy3_line)
-                new_all_lines.append(line)
+                else:
+                    new_all_lines.append(line)
         with open(file, 'w') as f:
             f.writelines(new_all_lines)
 
