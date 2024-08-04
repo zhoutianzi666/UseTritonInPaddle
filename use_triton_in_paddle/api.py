@@ -29,11 +29,14 @@ def make_triton_compatible_with_paddle():
                 new_all_lines.append(line)
         with open(link_file, 'w') as f:
             f.writelines(new_all_lines)
-
+    
+    has_add_patch = False
     for file in files:
         new_all_lines = []
         with open(file, 'r') as f:
             for line in f.readlines():
+                if ("import use_triton_in_paddle as torch" in line):
+                    has_add_patch = True
                 if ("import torch" in line):
                     copy0_line = line
                     copy1_line = line
@@ -51,9 +54,9 @@ def make_triton_compatible_with_paddle():
                     new_all_lines.append(copy3_line)
                 else:
                     new_all_lines.append(line)
-        with open(file, 'w') as f:
-            f.writelines(new_all_lines)
-
+        if has_add_patch == False:
+            with open(file, 'w') as f:
+                f.writelines(new_all_lines)
 
 
 def restore_triton():
