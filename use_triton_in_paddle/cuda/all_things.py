@@ -24,4 +24,7 @@ def is_available():
     return paddle.device.is_compiled_with_cuda()
 
 
+def current_stream(idx):
+    import paddle
+    return paddle.device.cuda.current_stream(idx)
 
