@@ -4,6 +4,10 @@ files = []
 
 
 import triton
+import os
+import tempfile
+import shutil
+
 if triton.__version__[0] == '3':
     files = [
         triton.__path__[0] + "/backends/amd/driver.py",
@@ -28,8 +32,10 @@ def make_triton_compatible_with_paddle():
             for line in f.readlines():
                 line = line.replace("(int)sizeof({meta.orig_kernel_name}_kernels);", "(int)(sizeof({meta.orig_kernel_name}_kernels) / sizeof({meta.orig_kernel_name}_kernels[0]));")
                 new_all_lines.append(line)
-        with open(link_file, 'w') as f:
-            f.writelines(new_all_lines)
+        with tempfile.NamedTemporaryFile('w', delete=False, encoding='utf-8') as tmpf:
+            tmpf.writelines(new_all_lines)
+            tmpf_path = tmpf.name
+        shutil.move(tmpf_path, link_file)
 
     for file in files:
         has_add_patch = False
@@ -39,6 +45,7 @@ def make_triton_compatible_with_paddle():
 
                 if ("import use_triton_in_paddle as torch" in line):
                     has_add_patch = True
+                    break
                 if ("import torch" in line):
                     copy0_line = line
                     copy1_line = line
@@ -59,7 +66,10 @@ def make_triton_compatible_with_paddle():
                 else:
                     new_all_lines.append(line)
         if has_add_patch == False:
-            with open(file, 'w') as f:
-                f.writelines(new_all_lines)
+            with tempfile.NamedTemporaryFile('w', delete=False, encoding='utf-8') as tmpf:
+                tmpf.writelines(new_all_lines)
+                tmpf_path = tmpf.name
+            shutil.move(tmpf_path, file)
+
 
 
